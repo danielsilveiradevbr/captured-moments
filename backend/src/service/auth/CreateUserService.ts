@@ -1,6 +1,7 @@
-import prismaClient from '../prisma'
+import prismaClient from '../../prisma'
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
+import { AuthUtils } from '../../utils/AuthUtils'
+
 
 interface UserProps {
     fullName: string
@@ -31,11 +32,8 @@ class CreateUserService {
             }
         })
 
-        const accessToken = jwt.sign(
-          {userId: user.id},
-          process.env.ACCESS_TOKEN_SECRET!,
-          {expiresIn: '72h'}
-        )
+        const accessToken = AuthUtils.generatedAccessToken(user.id)
+
 
         return {
             error: false,

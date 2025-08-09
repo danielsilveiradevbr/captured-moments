@@ -1,14 +1,7 @@
 import prismaClient from '../../prisma'
 import bcrypt from 'bcrypt'
 import { AuthUtils } from '../../utils/AuthUtils'
-
-
-interface UserProps {
-    fullName: string
-    email: string
-    password: string
-}
-
+import { UserProps } from 'UserProps'
 
 class CreateUserService {
     async execute({fullName, email, password}: UserProps) {

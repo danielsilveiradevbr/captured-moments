@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 export class AuthUtils {
 
     static generatedAccessToken(userId: string): string{
-        if (process.env.ACCESS_TOKEN_SECRET) {
+        if (!process.env.ACCESS_TOKEN_SECRET) {
             throw new Error('ACCESS_TOKEN_SECRET não definido!')
         }
         return jwt.sign(

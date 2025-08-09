@@ -2,12 +2,7 @@ import prismaClient from "../../prisma"
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { AuthUtils } from "../../utils/AuthUtils"
-
-interface UserProps {
-    email: string
-    password: string
-}
-
+import { UserProps } from "UserProps"
 
 class LoginUserService {
     async execute({email, password}: UserProps) {

@@ -1,14 +1,8 @@
+import { UserPropsLogin } from 'UserPropsLogin'
 import prismaClient from '../../prisma'
 
-interface UserProps {
-    user: {
-        userId: string
-    }
-}
-
-
 class GetUserService {
-    async execute({user}: UserProps) {
+    async execute({user}: UserPropsLogin) {
         const isUser = await prismaClient.user.findFirst({
             where: {
                 id: user.userId

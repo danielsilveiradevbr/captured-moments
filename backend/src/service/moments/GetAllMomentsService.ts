@@ -1,11 +1,11 @@
-import { UserPropsLogin } from 'UserPropsLogin'
+import { UserProps } from 'UserProps'
 import prismaClient from '../../prisma'
 
 class GetAllMomentsService {
-    async execute({user}: UserPropsLogin) {
+    async execute({user}: Omit<UserProps, 'fullName' | 'email' | 'password'>) {
         const moments = await prismaClient.registeredMoment.findMany({
             where: {
-                userId: user.userId
+                userId: user?.userId
             },
             orderBy: {
                 isFavorite: 'desc'

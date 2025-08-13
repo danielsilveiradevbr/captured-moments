@@ -5,7 +5,7 @@ declare module 'UserProps' {
         password: string  
         user: {
             userId: string
-        }      
+        } | undefined     
     }
 }
 

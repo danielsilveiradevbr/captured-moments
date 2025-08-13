@@ -5,6 +5,8 @@ import { GetUserController } from "./controller/auth/GetUserController";
 import { authenticateToken } from "./middleware/authenticateToken";
 import { AddRegisteredMomentsController } from "./controller/moments/AddRegisteredMoments";
 import { GetAllMomentsController } from "./controller/moments/GetAllMomentsController";
+import prismaClient from "./prisma";
+import { SearchController } from "./controller/moments/SearchController";
 
 
 export function routes(fastify: FastifyInstance){
@@ -26,6 +28,10 @@ export function routes(fastify: FastifyInstance){
    
     fastify.get('/get-all-moments', {preHandler: authenticateToken}, async(request, reply) => {
       return new GetAllMomentsController().handle(request, reply)     
+    }) 
+
+    fastify.get('/search', {preHandler: authenticateToken}, async(request, reply) => {
+      return new SearchController().handle(request, reply)             
     }) 
     
 }

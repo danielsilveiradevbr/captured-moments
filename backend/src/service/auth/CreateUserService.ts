@@ -4,7 +4,7 @@ import { AuthUtils } from '../../utils/AuthUtils'
 import { UserProps } from 'UserProps'
 
 class CreateUserService {
-    async execute({fullName, email, password}: UserProps) {
+    async execute({fullName, email, password}: Omit<UserProps, 'user'>) {
         const isUser = await prismaClient.user.findFirst({
             where: {
                 email: email

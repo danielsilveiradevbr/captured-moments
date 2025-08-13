@@ -3,7 +3,6 @@ import { CreateUserController } from "./controller/auth/CreateUserController";
 import { LoginUserController } from "./controller/auth/LoginUserController";
 import { GetUserController } from "./controller/auth/GetUserController";
 import { authenticateToken } from "./middleware/authenticateToken";
-import prismaClient from "./prisma";
 import { AddRegisteredMomentsController } from "./controller/moments/AddRegisteredMoments";
 
 

@@ -7,7 +7,7 @@ class AddRegisteredMomentsService {
     
     
     
-          const registeredMoments = await prismaClient.registeredMoment.create({
+          const Moment = await prismaClient.registeredMoment.create({
             data: {
               title: title,
               story: story,
@@ -18,7 +18,7 @@ class AddRegisteredMomentsService {
             }
           })
           
-          return {moment: registeredMoments}
+          return Moment
                          
     }
 }

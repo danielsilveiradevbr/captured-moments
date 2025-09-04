@@ -2,7 +2,7 @@ import { RegisteredMomentsProps } from "RegisteredMomentsProps"
 import prismaClient from "../../prisma"
 
 class AddRegisteredMomentsService {
-    async execute({title, story, visitedLocation, imageUrl, visitedDate, user}: RegisteredMomentsProps) {
+    async execute({title, story, visitedLocation, imageUrl, visitedDate, user}: Omit<RegisteredMomentsProps, 'id'>) {
           const parsevisitedDate = new Date(parseInt(visitedDate))
     
     

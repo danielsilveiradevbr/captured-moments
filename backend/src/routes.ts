@@ -7,6 +7,7 @@ import { AddRegisteredMomentsController } from "./controller/moments/AddRegister
 import { GetAllMomentsController } from "./controller/moments/GetAllMomentsController";
 import prismaClient from "./prisma";
 import { SearchController } from "./controller/moments/SearchController";
+import { EditRegisteredMomentsController } from "./controller/moments/EditRegisteredMomentsController";
 
 
 export function routes(fastify: FastifyInstance){
@@ -33,5 +34,9 @@ export function routes(fastify: FastifyInstance){
     fastify.get('/search', {preHandler: authenticateToken}, async(request, reply) => {
       return new SearchController().handle(request, reply)             
     }) 
+
+    fastify.put('/edit-moments/:id', {preHandler: authenticateToken}, async(request, reply) => {
+      return new EditRegisteredMomentsController().handle(request, reply)             
+    })
     
 }
